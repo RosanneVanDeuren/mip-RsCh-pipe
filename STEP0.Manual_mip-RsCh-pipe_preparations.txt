@@ -1,0 +1,39 @@
+## STEP0.Manual_mip-RsCh-pipe_preparations.txt contains preparation instructions.
+
+# 1) In each script there will be a "PREPARATION" that asks to specify <parameters>, some instructions:
+  # a. Date: use only numbers (no special characters)
+  # b. Cohort: use only numbers and letters (no special characters)
+  # c. Directories: use the absolute path from root, starting and ending with '/'
+  # d. Reffiles.etc: use the absolute path from root, starting and ending with '/'
+
+# 2) Create a folder "processing" with the following sub-folders:
+  # a. logs:         This folder contains the scripts with specified <variables> replaced for your cohort, the SAMPLES_FILE
+  #                  (samples_<COHORT>.txt), and after STEP6 also the SAMPLES_INCLUDED_FILE (samples_incl_<COHORT>.txt).
+  #                  From here you can run the pipeline scripts, the logs will then also be located in this folder.
+  #
+  # b. bamFiles:     This folder contains the raw bam-files to be processed, and after STEP1 also the read-filtered bamFiles.
+  #
+  # c. covFiles:     This folder will contain the raw coverage output and subsequent parsed, sorted, panel-average, merged,
+  #                  and summary statistics.
+  #
+  # d. vcfFiles:     This folder will contain the raw vcf-files, and subsequent splitted, QUAL-filtered, mpileup-filtered,
+  #
+  # e. mpileupFiles: This folder will contain the locations for samtools mpileup, and subsequent merged mpileups, prepped
+  #                  mpileups, and finally the parsed mpileups that are used to generate the mpileup-filtered vcfs.
+  #
+  # f. out:          This folder will contain the final output; a merged variant-file with annotation information.
+  #
+  # g. refFiles:     This folder contains the reference-files specific to this pipeline. Included in this repository:
+  #                  targetCallingFile_il1mips.bed, baseCovDepthDF_il1mipTargetRegion.txt,
+  #                  dbSnp150common_il1mipTargetRegion_COMMONadjRC_CHR.txt. Not included in this repository: a reference file
+  #                  of dbSnp137 (dbsnp_137.hg19.vcf), and a fasta reference for hg19 (ref_hg19.fasta), with accompanying files
+  #                  (ref_hg19.fasta.fai, ref_hg19.dict, ref_hg19.dict.fai). For downloading these files please see the README.md.
+
+# 3) Copy raw bamFiles to be processed to the "bamFiles"-folder.
+
+# 4) Copy the scripts in which variables have been specified for your cohort in the "logs"-folder,
+#    from here you will run the pipeline scripts, the final output will be located in the "out"-folder.
+
+# 5) From inside the "logs"-folder, create your "samples_<COHORT>.txt"-file.
+
+# 6) Ready for running.

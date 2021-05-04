@@ -1,0 +1,14 @@
+##STEP14a.Manual_createVcfsList_mergeVcfs_splitMultiAllelicSites.txt
+
+# 1) Create vcfsToMergeList (specify <parameters>).
+ls -d "</PATH/TO/VCFFILE/DIRECTORY/>"* </PATH/TO/VCFFILE/DIRECTORY/> | grep .pileupFiltered.vcf > </PATH/TO/VCFFILE/DIRECTORY/>vcfsToMerge_<COHORT>-<DATE>.vcfs.list
+
+# 2) Merge vcfs (specify <parameters>).
+java -jar </PATH/TO/>GenomeAnalysisTK-3.8-1-0-gf15c1c3ef/GenomeAnalysisTK.jar -T CombineVariants -R </PATH/TO/REFERENCEFILES/DIRECTORY/>ref_hg19.fasta --variant </PATH/TO/VCFFILE/DIRECTORY/>vcfsToMerge_<COHORT>-<DATE>.vcfs.list --out </PATH/TO/VCFFILE/DIRECTORY/>vcfsMerged_<COHORT>-<DATE>.vcf --filteredrecordsmergetype KEEP_UNCONDITIONAL --genotypemergeoption UNSORTED --excludeNonVariants &>> logSTEP14a.Manual_createVcfsList_mergeVcfs_<COHORT>-<DATE>.txt
+
+# 3) Manually fix following header-lines in the merged vcf by opening it in any terminal based text editor of your preference.
+	##INFO=<ID=MLEAC,Number=A,Type=...	to 	##INFO=<ID=MLEAC,Number=.,Type=Integer...
+	##INFO=<ID=MLEAF,Number=A,Type=...	to 	##INFO=<ID=MLEAF,Number=.,Type=Float...
+
+# 4) Split multi-allelic variant sites (specify <parameters>).
+</PATH/TO/BCFTOOLS/>bcftools norm -m - -f </PATH/TO/REFERENCEFILES/DIRECTORY/>ref_hg19.fasta </PATH/TO/VCFFILE/DIRECTORY/>vcfsMerged_<COHORT>-<DATE>.vcf -o </PATH/TO/VCFFILE/DIRECTORY/>vcfsMergedSplitted_<COHORT>-<DATE>.vcf &>> logSTEP14a.Manual_createVcfsList_mergeVcfs_<COHORT>-<DATE>.txt

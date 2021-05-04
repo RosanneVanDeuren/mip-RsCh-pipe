@@ -1,0 +1,17 @@
+## STEP7a.Manual_coverageCheck_beforeVariantCalling.txt
+
+# 1) Download the average coverage file (output from STEP4) and create a new SAMPLES_FILE containing only sampleIDs that have an average coverage > 100x (SAMPLES_INCLUDED_FILE).
+
+# 2) Download the summary statistics coverage file (output from STEP6) and calculate the coverage based gender:
+  # a. Compute the panel average by taking the average over all GENEID.mean columns.
+  # b. Compute the X-chromosomal average by taking the average over X-chromosomalGene.mean columns (CYBB.mean; IL1RAPL1.mean; IL1RAPL2.mean).
+  # c. Compute the autosomal average by taking the average over autsomeGene.mean columns (all but abovementioned three).
+  # d. Normalize the X-chromosomal and autosomal average on the panel average (e.g. X-chromosomal average / panel average).
+  # e. Compute the ratio of normalized X-chromosomal average and normalized autosomal average.
+  # f. Sort the ratio from e., and search for the largest "gap"; this is your "cut-off" for Males (below) vs Females (above).
+  # g. Use the cut-off from f. to calculate the coverage-based gender.
+  # h. Compare coverage-based gender with database gender.
+
+# 3) Remove sampleIDs that do not pass the gender check (if any) from SAMPLES_INCLUDED_FILE.
+
+# 4) Continue with STEP7.Bashscript_GATKvariantCalling_UnifiedGenotyper.sh.
