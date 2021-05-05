@@ -14,10 +14,10 @@ In short, the following filters / checks are executed:
 5. Mpileup-statistics-filter (STEP10, 11, 12, 13)
 6. Variant annotation, using our inhouse annotation service (STEP14a, 14b, 14c, 15)
 
-# **Input**
+### **Input**
 Sorted bamfiles for all samples in your cohort.
 
-# **Output**
+### **Output**
 A merged variant file (tab-separated txt) from all samples in your cohort combined.
 
 
@@ -47,4 +47,5 @@ The current version of this pipeline has been applied to the MIP-sequencing data
 An automated version of this pipeline is in progress, the link will appear here.
 
 **Author**  : Rosanne C. van Deuren
+
 **Contact** : Rosanne.vanDeuren@radboudumc.nl
