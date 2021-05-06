@@ -13,7 +13,8 @@ In short, the following filters / checks are executed:
 4. A rare variant filter on vcf QUAL >= 1000 (STEP9)
 5. Mpileup-statistics-filter (STEP10, 11, 12, 13)
 6. Variant annotation, using our inhouse annotation service (STEP14a, 14b, 14c, 15)
-    Note: Alternatively, the merged vcf (output STEP14a) can be used for an annotation service of your choice. 
+   - Note: Alternatively, the merged vcf (output STEP14a) can be used for an annotation service of your choice. 
+
 
 
 ### **Input**
