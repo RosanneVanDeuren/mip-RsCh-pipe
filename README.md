@@ -48,4 +48,3 @@ An automated version of this pipeline is in progress, the link will appear here.
 
 **Author**  : Rosanne C. van Deuren
 
-**Contact** : Rosanne.vanDeuren@radboudumc.nl
